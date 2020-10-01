@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: directory-exists-error
+spec:
+  restartPolicy: Never
+  containers:
+    - name: directory-exists-error
+      image: alpine
+      command: ["touch", "/d4m24-grpc-fuse-directory-exists-error/touched.txt"]
+      volumeMounts:
+        - mountPath: /d4m24-grpc-fuse-directory-exists-error
+          name: directory-exists-error
+  volumes:
+    - name: directory-exists-error
+      hostPath:
+        path: /private/tmp/d4m24-grpc-fuse-directory-exists-error
